@@ -1,0 +1,28 @@
+name: haber_app
+description: "Güncel haberleri listeleyen, detaylarını gösteren ve kaydetme özelliği sunan modern Flutter haber uygulaması."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # HTTP istekleri için
+  http: ^1.2.0
+  # Haber kaynağını tarayıcıda açmak için
+  url_launcher: ^6.2.0
+  # Tarih formatlama için
+  intl: ^0.19.0
+  # Material ikonları
+  cupertino_icons: ^1.0.6
+  shared_preferences: ^2.5.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
