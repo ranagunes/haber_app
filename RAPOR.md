@@ -7,7 +7,7 @@
 | **Proje Adı** | HaberApp - Flutter Haber Uygulaması |
 | **Platform** | Android |
 | **Geliştirme Ortamı** | Flutter / Dart |
-| **GitHub Linki** | [BURAYA_GITHUB_LINKINIZI_GIRIN] |
+| **GitHub Linki** | [https://github.com/ranagunes/haber_app](https://github.com/ranagunes/haber_app) |
 
 ---
 

@@ -53,7 +53,7 @@ haber_app/
 
 1. **Repoyu klonlayın:**
    ```bash
-   git clone <REPO_URL>
+   git clone https://github.com/ranagunes/haber_app.git
    cd haber_app
    ```
 
