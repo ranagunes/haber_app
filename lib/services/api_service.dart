@@ -4,8 +4,8 @@ import '../models/article.dart';
 
 /// NewsAPI ile iletişim kuran servis sınıfı.
 /// Türkiye'deki güncel haberleri kategoriye göre çeker.
-/// Eğer API anahtarı girilmemişse veya istek başarısız olursa,
-/// kullanıcıya yüksek kaliteli Türkçe demo/mock haberleri sunar.
+/// Eğer API anahtarı girilmemişse veya bağlantı hatası oluşursa,
+/// test/demo amaçlı yerel haber listesini döndürür.
 class ApiService {
   // NewsAPI ana endpoint adresi
   static const String _baseUrl = 'https://newsapi.org/v2/top-headlines';
@@ -15,9 +15,9 @@ class ApiService {
   static const String _apiKey = 'BURAYA_API_KEYINIZI_GIRIN';
 
   /// Belirtilen kategoriye göre haberleri NewsAPI'den çeker.
-  /// API anahtarı girilmemişse veya istek başarısız olursa mock verileri döndürür.
+  /// API anahtarı girilmemişse veya istek başarısız olursa yedek verileri döndürür.
   Future<List<Article>> fetchArticles({String category = 'general'}) async {
-    // API Key girilmemişse doğrudan mock verileri dön (Gecikme ve CORS hatasını önlemek için)
+    // API Key girilmemişse doğrudan yedek verileri dön (Gecikme ve CORS hatasını önlemek için)
     if (_apiKey == 'BURAYA_API_KEYINIZI_GIRIN' || _apiKey.trim().isEmpty) {
       return _getMockArticles(category);
     }
@@ -39,24 +39,24 @@ class ApiService {
             )
             .toList();
 
-        // Eğer API'den gelen liste boşsa mock verilere düş
+        // Eğer API'den gelen liste boşsa yerel verilere düş
         if (articles.isEmpty) {
           return _getMockArticles(category);
         }
         return articles;
       } else {
         print(
-          'API Hatası: Durum kodu ${response.statusCode} — ${response.reasonPhrase}. Mock verilere yönlendiriliyor...',
+          'API Hatası: Durum kodu ${response.statusCode} — ${response.reasonPhrase}. Yerel verilere yönlendiriliyor...',
         );
         return _getMockArticles(category);
       }
     } catch (e) {
-      print('Haberler çekilirken bir hata oluştu ($e). Mock verilere yönlendiriliyor...');
+      print('Haberler çekilirken bir hata oluştu ($e). Yerel verilere yönlendiriliyor...');
       return _getMockArticles(category);
     }
   }
 
-  /// Kategoriye göre yüksek kaliteli Türkçe mock/demo haberleri döndürür.
+  /// Kategoriye göre test amaçlı Türkçe haber listesi döndürür.
   List<Article> _getMockArticles(String category) {
     final now = DateTime.now();
     final dateString = "${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}T12:00:00Z";
