@@ -1,0 +1,84 @@
+======================================================================
+                 MOBİL PROGRAMLAMA DERSİ PROJE RAPORU
+======================================================================
+
+1. PROJE BİLGİLERİ
+----------------------------------------------------------------------
+Öğrenci Adı Soyadı : Rana Güneş
+E-Posta            : haticeranagunes@gmail.com
+Proje Adı          : HaberApp - Flutter Haber Uygulaması
+Hedef Platform     : Android & iOS & Web
+Geliştirme Dili    : Dart (Flutter SDK)
+GitHub Depo Linki  : https://github.com/ranagunes/haber_app
+
+
+2. PROJE AÇIKLAMASI
+----------------------------------------------------------------------
+HaberApp, güncel haberleri kategorilerine göre (Genel, Teknoloji, Spor, 
+Sağlık, Bilim, Eğlence) listeleyen, detaylarını gösteren ve kullanıcının 
+beğendiği haberleri yerel hafızaya kaydedebileceği modern bir mobil 
+uygulamadır. Uygulama, NewsAPI.org üzerinden gerçek zamanlı haber verisi 
+çekebilecek şekilde tasarlanmış olup, çevrimdışı veya API anahtarı olmadığı 
+durumlarda da yerel yedek veri mekanizmasıyla kesintisiz çalışmaktadır.
+
+
+3. KULLANILAN TEKNOLOJİLER VE KÜTÜPHANELER
+----------------------------------------------------------------------
+* Flutter SDK (v3.7.0+) - Cross-platform mobil uygulama geliştirme çatısı
+* Dart - Güçlü ve esnek nesne yönelimli programlama dili
+* NewsAPI.org - Canlı haber verilerini çeken harici REST API servisi
+* SharedPreferences - Veri yönetimi ve yerel kalıcı veri depolama
+* HTTP Paketi - Sunucuya veri istekleri göndermek için kullanılan ağ paketi
+* url_launcher - Haberlerin orijinal kaynaklarını tarayıcıda açma aracı
+* Material Design 3 - Modern, dinamik ve kullanıcı dostu arayüz tasarımı
+
+
+4. UYGULAMA EKRANLARI (EN AZ 3 AKTİVİTE / EKRAN)
+----------------------------------------------------------------------
+Uygulama, dersin en az 3 ekran şartını tam olarak karşılayan 3 ana sayfadan 
+oluşmaktadır:
+
+A. Ana Sayfa (HomeScreen):
+   * Üst kısımda kategori değiştirme çipleri yer alır.
+   * Haberler kart tasarımıyla (görsel, başlık, açıklama, kaynak ve tarih) listelenir.
+   * "Pull-to-refresh" (aşağı çekerek yenileme) özelliği desteklenmektedir.
+
+B. Haber Detay Ekranı (DetailScreen):
+   * Hero animasyonlu büyük haber görseli barındırır.
+   * Haberin başlığı, tarihi, kaynağı ve detaylı metni gösterilir.
+   * Haberi kaydetme/kaldırma ve orijinal kaynağını tarayıcıda açma butonları bulunur.
+
+C. Kaydedilenler Ekranı (SavedScreen):
+   * SharedPreferences deposundan kaydedilmiş haberleri listeler.
+   * Sola kaydırarak listeden silme (Dismissible) ve silme öncesi onay diyalogu sunar.
+
+
+5. TEKNİK GEREKSİNİMLERİN KARŞILANMA DURUMU
+----------------------------------------------------------------------
+* Platform Serbestliği : SAĞLANDI (Flutter ile Android, iOS ve Web uyumlu)
+* Konu Serbestliği     : SAĞLANDI (Haber Uygulaması)
+* En az 3 Ekran        : SAĞLANDI (HomeScreen, DetailScreen, SavedScreen)
+* Yerel Veri Yönetimi  : SAĞLANDI (SharedPreferences ile kalıcı depolama)
+* API Entegrasyonu     : SAĞLANDI (NewsAPI.org entegrasyonu + yedek veri modu)
+* Tasarım ve UX        : SAĞLANDI (Material 3 standartlarında modern arayüz)
+* Kod Düzeni           : SAĞLANDI (Fonksiyon açıklamalı, Türkçe yorum satırlı)
+
+
+6. PROJE DİZİN YAPISI
+----------------------------------------------------------------------
+haber_app/
+ ├── lib/
+ │    ├── main.dart                    # Uygulama giriş noktası ve temalandırma
+ │    ├── models/
+ │    │    └── article.dart             # Haber veri modeli
+ │    ├── services/
+ │    │    ├── api_service.dart         # Haber API (NewsAPI) bağlantı servisi
+ │    │    └── database_service.dart    # Yerel kalıcı veri depolama servisi
+ │    ├── screens/
+ │    │    ├── home_screen.dart         # Ana sayfa ekran tasarımı
+ │    │    ├── detail_screen.dart       # Haber detay ekran tasarımı
+ │    │    └── saved_screen.dart        # Kaydedilen haberler ekran tasarımı
+ │    └── widgets/
+ │         └── article_card.dart        # Ortak haber listeleme kartı bileşeni
+ ├── pubspec.yaml                     # Proje bağımlılıkları ve ayarları
+ └── README.md                        # Proje kullanım klavuzu
